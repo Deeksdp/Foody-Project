@@ -2,6 +2,7 @@
 This file contains database models for the foodies app.
 Models represent tables in the database and the relationship b/w them.
 """
+from email.policy import default
 from peewee import *
 from exceptions import FoodieExit
 
@@ -47,6 +48,7 @@ class Restaurant(Model):
 
 class Food(Model):
     name =CharField(unique=True)
+    restaurant = ForeignKeyField(Restaurant, backref='foods')
     price = IntegerField()
     is_veg = BooleanField(default=True)
     quantity =IntegerField(default=0)
