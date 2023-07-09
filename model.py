@@ -20,6 +20,7 @@ class User(Model):
 
 class Restaurant(Model):
     name = CharField(unique=True)
+    rating = FloatField()
     class Meta:
          database =db
 
@@ -47,7 +48,9 @@ class Restaurant(Model):
 class Food(Model):
     name =CharField(unique=True)
     price = IntegerField()
-    v_nv = CharField()
+    is_veg = BooleanField(default=True)
+    quantity =IntegerField(default=0)
+
 
 
     class Meta:
